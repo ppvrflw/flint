@@ -27,7 +27,7 @@ A fast, lightweight, and efficient Indicator of Compromise (IoC) matching librar
 implementation 'me.ppvrflw:flint:0.1.0'
 ```
 
-### Create an matcher
+### Create a matcher
 
 #### Kotlin
 ```kotlin

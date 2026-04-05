@@ -1,13 +1,15 @@
 plugins {
   kotlin("jvm") version "2.3.10"
-  kotlin("plugin.allopen") version "2.3.10"
-
-  id("org.jetbrains.kotlinx.benchmark") version "0.4.14"
 
   `maven-publish`
+  id("com.ncorti.ktfmt.gradle") version "0.26.0"
+
+  id("org.jetbrains.kotlinx.benchmark") version "0.4.14"
+  kotlin("plugin.allopen") version "2.3.10"
 }
 
 group = "me.ppvrflw"
+
 version = "0.1.0"
 
 repositories { mavenCentral() }
@@ -51,9 +53,5 @@ publishing {
       }
     }
   }
-  publications {
-    register<MavenPublication>("gpr") {
-      from(components["java"])
-    }
-  }
+  publications { register<MavenPublication>("gpr") { from(components["java"]) } }
 }

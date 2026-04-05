@@ -1,11 +1,11 @@
 package me.ppvrflw.benchmark
 
+import java.security.MessageDigest
+import java.security.SecureRandom
 import me.ppvrflw.FileHashRecord
 import me.ppvrflw.matcher.FileHashMatcher
 import org.openjdk.jmh.annotations.*
 import org.openjdk.jmh.infra.Blackhole
-import java.security.MessageDigest
-import java.security.SecureRandom
 
 @State(Scope.Benchmark)
 @BenchmarkMode(Mode.Throughput)

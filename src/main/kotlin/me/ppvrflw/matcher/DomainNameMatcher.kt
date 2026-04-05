@@ -2,7 +2,6 @@ package me.ppvrflw.matcher
 
 import me.ppvrflw.DomainNameRecord
 import me.ppvrflw.Matcher
-import java.util.concurrent.ConcurrentHashMap
 
 /**
  * A [Matcher] that indexes and matches values by domain name, supporting suffix-based subdomain
@@ -17,14 +16,13 @@ import java.util.concurrent.ConcurrentHashMap
  */
 class DomainNameMatcher<V> : Matcher<DomainNameRecord, V> {
 
-  private val tldDomainTrieMap:
-      ConcurrentHashMap<String, ConcurrentHashMap<String, SubdomainTrie<V>>> =
-      ConcurrentHashMap()
+  private val tldDomainTrieMap: MutableMap<String, MutableMap<String, SubdomainTrie<V>>> =
+      mutableMapOf()
 
   override fun insert(key: DomainNameRecord, value: V) {
     val trie =
         tldDomainTrieMap
-            .getOrPut(key.tld) { ConcurrentHashMap() }
+            .getOrPut(key.tld) { mutableMapOf() }
             .getOrPut(key.domain) { SubdomainTrie() }
 
     trie.insert(key.subdomainParts.orEmpty(), value)

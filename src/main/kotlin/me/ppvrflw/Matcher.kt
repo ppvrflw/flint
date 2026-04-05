@@ -1,5 +1,9 @@
 package me.ppvrflw
 
+/**
+ * Implementations are not thread-safe. Callers must synchronize externally if accessed from
+ * multiple threads.
+ */
 interface Matcher<K, V> {
 
   /**
@@ -7,7 +11,6 @@ interface Matcher<K, V> {
    *
    * @param key the key to associate the value with
    * @param value the value to store
-   * @return the inserted value
    */
   fun insert(key: K, value: V)
 

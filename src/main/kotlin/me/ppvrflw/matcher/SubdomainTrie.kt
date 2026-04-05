@@ -1,8 +1,5 @@
 package me.ppvrflw.matcher
 
-import java.util.concurrent.ConcurrentHashMap
-import java.util.concurrent.CopyOnWriteArrayList
-
 /**
  * A trie (prefix tree) for matching subdomain hierarchies.
  *
@@ -30,7 +27,9 @@ internal class SubdomainTrie<V> {
               current.children.getOrPut(token) { TrieNode() }
             }
 
-    node.values.addIfAbsent(value)
+    if (value !in node.values) {
+      node.values.add(value)
+    }
   }
 
   /**
@@ -72,7 +71,7 @@ internal class SubdomainTrie<V> {
 
   /** A single node in the subdomain trie, holding child branches and associated values. */
   private class TrieNode<V> {
-    val children: ConcurrentHashMap<String, TrieNode<V>> = ConcurrentHashMap()
-    val values: CopyOnWriteArrayList<V> = CopyOnWriteArrayList()
+    val children: MutableMap<String, TrieNode<V>> = mutableMapOf()
+    val values: MutableList<V> = mutableListOf()
   }
 }

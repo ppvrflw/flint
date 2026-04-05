@@ -15,7 +15,7 @@ private const val STRIDE_MASK = CHILDREN - 1 // 0xF
  *
  * @param V The type of values stored at trie nodes.
  */
-class BinaryPrefixTrie<V> {
+internal class BinaryPrefixTrie<V> {
 
   private class Node<V> {
     val children = arrayOfNulls<Node<V>>(CHILDREN)

@@ -4,8 +4,7 @@ import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.CopyOnWriteArrayList
 
 /**
- * A trie (prefix tree) for matching subdomain hierarchies. !! Trie should not be access directly,
- * only through the DomainNameMatcher.
+ * A trie (prefix tree) for matching subdomain hierarchies.
  *
  * Subdomain parts are stored in reverse order, so that lookups traverse from the most general label
  * to the most specific. Each node along the path may hold one or more values, allowing partial

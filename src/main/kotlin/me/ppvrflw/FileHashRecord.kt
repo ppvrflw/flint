@@ -13,8 +13,8 @@ import me.ppvrflw.FileHashRecord.Companion.from
  */
 data class FileHashRecord(val hash: String) {
   init {
-    require(hash.isNotBlank()) { "hash can't be empty!" }
-    require(hash == hash.lowercase()) { "hash must be lowercase!" }
+    require(hash.isNotBlank()) { "hash can't be empty" }
+    require(hash == hash.lowercase()) { "hash must be lowercase" }
   }
 
   companion object {

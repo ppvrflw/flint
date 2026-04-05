@@ -4,11 +4,10 @@ import me.ppvrflw.IpAddressRecord
 import me.ppvrflw.matcher.IpMatcher
 import org.openjdk.jmh.annotations.*
 import org.openjdk.jmh.infra.Blackhole
-import java.util.concurrent.TimeUnit
 
 @State(Scope.Benchmark)
 @Fork(1)
-open class Ipv4MatcherBenchmark {
+class Ipv4MatcherBenchmark {
   private lateinit var matcher: IpMatcher<String>
   private lateinit var queries: List<String>
   private var index = 0

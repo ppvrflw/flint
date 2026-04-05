@@ -7,7 +7,7 @@ import org.openjdk.jmh.infra.Blackhole
 
 @State(Scope.Benchmark)
 @Fork(1)
-open class Ipv6MatcherBenchmark {
+class Ipv6MatcherBenchmark {
   private lateinit var matcher: IpMatcher<String>
   private lateinit var queries: List<String>
   private var index = 0

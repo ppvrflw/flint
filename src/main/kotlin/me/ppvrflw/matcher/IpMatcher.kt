@@ -24,7 +24,9 @@ class IpMatcher<V> : Matcher<IpAddressRecord, V> {
   }
 
   override fun match(key: IpAddressRecord): List<V> {
-    lock.read { return trieFor(key).match(toTokens(key), key.prefix) }
+    lock.read {
+      return trieFor(key).match(toTokens(key), key.prefix)
+    }
   }
 
   private fun trieFor(record: IpAddressRecord) = tries.getValue(record.ipVersion)

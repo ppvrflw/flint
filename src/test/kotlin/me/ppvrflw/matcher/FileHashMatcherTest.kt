@@ -7,19 +7,13 @@ import me.ppvrflw.FileHashRecord
 class FileHashMatcherTest :
     FunSpec({
       test("match exact hash") {
-        val matcher =
-            FileHashMatcher<String>().apply {
-              insert(FileHashRecord.from("abc123"), "A")
-            }
+        val matcher = FileHashMatcher<String>().apply { insert(FileHashRecord.from("abc123"), "A") }
 
         matcher.match(FileHashRecord.from("abc123")) shouldBe listOf("A")
       }
 
       test("no match for unknown hash") {
-        val matcher =
-            FileHashMatcher<String>().apply {
-              insert(FileHashRecord.from("abc123"), "A")
-            }
+        val matcher = FileHashMatcher<String>().apply { insert(FileHashRecord.from("abc123"), "A") }
 
         matcher.match(FileHashRecord.from("def456")) shouldBe emptyList()
       }
@@ -56,10 +50,7 @@ class FileHashMatcherTest :
       }
 
       test("case insensitive via convert") {
-        val matcher =
-            FileHashMatcher<String>().apply {
-              insert(FileHashRecord.from("ABC123"), "A")
-            }
+        val matcher = FileHashMatcher<String>().apply { insert(FileHashRecord.from("ABC123"), "A") }
 
         matcher.match(FileHashRecord.from("abc123")) shouldBe listOf("A")
       }

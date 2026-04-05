@@ -75,9 +75,7 @@ class IpMatcherTest :
 
       test("default route matches everything") {
         val matcher =
-            IpMatcher<String>().apply {
-              insert(IpAddressRecord.from("0.0.0.0/0"), "default")
-            }
+            IpMatcher<String>().apply { insert(IpAddressRecord.from("0.0.0.0/0"), "default") }
 
         matcher.match(IpAddressRecord.from("1.2.3.4")) shouldBe listOf("default")
         matcher.match(IpAddressRecord.from("255.255.255.255")) shouldBe listOf("default")
@@ -85,9 +83,7 @@ class IpMatcherTest :
 
       test("host bits are ignored on insert") {
         val matcher =
-            IpMatcher<String>().apply {
-              insert(IpAddressRecord.from("192.168.1.99/24"), "A")
-            }
+            IpMatcher<String>().apply { insert(IpAddressRecord.from("192.168.1.99/24"), "A") }
 
         matcher.match(IpAddressRecord.from("192.168.1.1")) shouldBe listOf("A")
         matcher.match(IpAddressRecord.from("192.168.1.200")) shouldBe listOf("A")

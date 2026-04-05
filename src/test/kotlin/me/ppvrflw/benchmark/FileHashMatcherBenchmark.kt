@@ -6,12 +6,11 @@ import org.openjdk.jmh.annotations.*
 import org.openjdk.jmh.infra.Blackhole
 import java.security.MessageDigest
 import java.security.SecureRandom
-import java.util.concurrent.TimeUnit
 
 @State(Scope.Benchmark)
 @BenchmarkMode(Mode.Throughput)
 @Fork(1)
-open class FileHashMatcherBenchmark {
+class FileHashMatcherBenchmark {
   private lateinit var matcher: FileHashMatcher<String>
   private var queries: MutableList<String> = mutableListOf()
   private var index = 0

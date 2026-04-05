@@ -1,7 +1,5 @@
 package me.ppvrflw
 
-import me.ppvrflw.DomainNameRecord.Companion.from
-
 private const val MIN_DOMAIN_PARTS = 2
 
 /**
@@ -9,7 +7,7 @@ private const val MIN_DOMAIN_PARTS = 2
  *
  * Stores the top-level domain (TLD), second-level domain, and optional subdomain hierarchy.
  * Subdomains are stored in order from leftmost to rightmost (e.g., "api.sub.example.com" stores
- * ["api", "sub"]). Use the companion object's [from] method to parse hostname strings.
+ * ["api", "sub"]). Use the companion object's `from` method to parse hostname strings.
  *
  * @property tld The top-level domain (e.g., "com", "org").
  * @property domain The second-level domain name (e.g., "example").

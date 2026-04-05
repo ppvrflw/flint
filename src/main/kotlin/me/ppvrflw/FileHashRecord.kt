@@ -1,12 +1,10 @@
 package me.ppvrflw
 
-import me.ppvrflw.FileHashRecord.Companion.from
-
 /**
  * Represents a file hash as a lowercase hexadecimal string.
  *
  * The hash value must be non-blank and consist only of lowercase characters. Use the companion
- * object's [from] method to create instances with automatic lowercase conversion.
+ * object's `from` method to create instances with automatic lowercase conversion.
  *
  * @property hash A non-blank, lowercase hexadecimal string.
  * @throws IllegalArgumentException if the hash is blank or contains uppercase characters.

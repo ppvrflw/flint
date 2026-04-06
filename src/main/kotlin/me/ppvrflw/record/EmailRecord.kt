@@ -19,12 +19,15 @@ data class EmailRecord(
       val parts = email.split("@")
       require(parts.size == 2) { "email must have exactly one @ symbol" }
 
+      val localPart = parts[0]
+      require(localPart.isNotEmpty()) { "local part cannot be empty" }
+
       val hostname = parts[1]
       require(hostname.isNotEmpty()) { "hostname cannot be empty" }
 
       return EmailRecord(
           domainNameRecord = DomainNameRecord.from(hostname),
-          localPart = parts[0],
+          localPart = localPart,
       )
     }
   }

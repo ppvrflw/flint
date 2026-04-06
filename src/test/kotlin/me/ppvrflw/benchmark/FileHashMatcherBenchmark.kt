@@ -2,8 +2,8 @@ package me.ppvrflw.benchmark
 
 import java.security.MessageDigest
 import java.security.SecureRandom
-import me.ppvrflw.record.FileHashRecord
 import me.ppvrflw.matcher.FileHashMatcher
+import me.ppvrflw.record.FileHashRecord
 import org.openjdk.jmh.annotations.*
 import org.openjdk.jmh.infra.Blackhole
 

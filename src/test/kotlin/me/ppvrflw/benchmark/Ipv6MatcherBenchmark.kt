@@ -1,7 +1,7 @@
 package me.ppvrflw.benchmark
 
-import me.ppvrflw.record.IpAddressRecord
 import me.ppvrflw.matcher.IpMatcher
+import me.ppvrflw.record.IpAddressRecord
 import org.openjdk.jmh.annotations.*
 import org.openjdk.jmh.infra.Blackhole
 

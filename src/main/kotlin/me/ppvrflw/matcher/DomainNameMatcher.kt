@@ -1,7 +1,7 @@
 package me.ppvrflw.matcher
 
-import me.ppvrflw.record.DomainNameRecord
 import me.ppvrflw.Matcher
+import me.ppvrflw.record.DomainNameRecord
 
 /**
  * A [Matcher] that indexes and matches values by domain name, supporting suffix-based subdomain

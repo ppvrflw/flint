@@ -1,8 +1,8 @@
 package me.ppvrflw.matcher
 
+import me.ppvrflw.Matcher
 import me.ppvrflw.record.IpAddressRecord
 import me.ppvrflw.record.IpVersion
-import me.ppvrflw.Matcher
 
 /** IP address matcher that routes IPv4 and IPv6 records to separate binary prefix tries. */
 class IpMatcher<V> : Matcher<IpAddressRecord, V> {

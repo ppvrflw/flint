@@ -1,7 +1,7 @@
 package me.ppvrflw.matcher
 
-import me.ppvrflw.record.FileHashRecord
 import me.ppvrflw.Matcher
+import me.ppvrflw.record.FileHashRecord
 
 /**
  * A [Matcher] that indexes and matches values by file hash.

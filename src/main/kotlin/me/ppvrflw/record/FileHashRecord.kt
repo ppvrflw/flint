@@ -1,5 +1,8 @@
 package me.ppvrflw.record
 
+import me.ppvrflw.FileHashMatchable
+import me.ppvrflw.matcher.FileHashMatcher
+
 /**
  * Represents a file hash as a lowercase hexadecimal string.
  *
@@ -9,7 +12,11 @@ package me.ppvrflw.record
  * @property hash A non-blank, lowercase hexadecimal string.
  * @throws IllegalArgumentException if the hash is blank or contains uppercase characters.
  */
-data class FileHashRecord(val hash: String) {
+data class FileHashRecord(val hash: String) : FileHashMatchable {
+  override fun <V> match(matcher: FileHashMatcher<V>): List<V> {
+    return matcher.match(this)
+  }
+
   init {
     require(hash.isNotBlank()) { "hash can't be empty" }
     require(hash == hash.lowercase()) { "hash must be lowercase" }

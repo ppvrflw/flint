@@ -1,5 +1,8 @@
 package me.ppvrflw.record
 
+import me.ppvrflw.DomainMatchable
+import me.ppvrflw.matcher.DomainNameMatcher
+
 private const val MIN_DOMAIN_PARTS = 2
 
 /**
@@ -18,7 +21,11 @@ data class DomainNameRecord(
     val tld: String,
     val domain: String,
     val subdomainParts: List<String>?,
-) {
+) : DomainMatchable {
+
+  override fun <V> match(matcher: DomainNameMatcher<V>): List<V> {
+    return matcher.match(this)
+  }
 
   companion object {
 

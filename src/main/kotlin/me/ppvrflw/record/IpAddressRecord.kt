@@ -1,6 +1,8 @@
 package me.ppvrflw.record
 
 import java.net.InetAddress
+import me.ppvrflw.IpMatchable
+import me.ppvrflw.matcher.IpMatcher
 
 private const val IPV4_OCTET_COUNT = 4
 private const val IPV6_BYTE_COUNT = 16
@@ -21,7 +23,11 @@ data class IpAddressRecord(
     val ipNumberHigh: ULong,
     val ipNumberLow: ULong,
     val prefix: Int,
-) {
+) : IpMatchable {
+  override fun <V> match(matcher: IpMatcher<V>): List<V> {
+    return matcher.match(this)
+  }
+
   companion object {
     /**
      * Parses the given string into an [IpAddressRecord].

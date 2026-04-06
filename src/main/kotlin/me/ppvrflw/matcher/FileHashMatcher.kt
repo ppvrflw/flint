@@ -29,5 +29,5 @@ class FileHashMatcher<V> : Matcher<FileHashRecord, V> {
     }
   }
 
-  override fun match(key: FileHashRecord): List<V> = fileHashMap[key.hash] ?: emptyList()
+  override fun match(key: FileHashRecord): List<V> = fileHashMap[key.hash]?.toList() ?: emptyList()
 }

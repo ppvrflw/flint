@@ -95,4 +95,14 @@ class FileHashMatcherTest :
 
         matcher.match(FileHashRecord.from("abc123")) shouldBe listOf("A")
       }
+
+      test("match returns a snapshot unaffected by later inserts") {
+        val matcher =
+            FileHashMatcher<String>().apply { insert(FileHashRecord.from("abc123"), "A") }
+
+        val result = matcher.match(FileHashRecord.from("abc123"))
+        matcher.insert(FileHashRecord.from("abc123"), "B")
+
+        result shouldBe listOf("A")
+      }
     })

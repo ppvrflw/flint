@@ -1,6 +1,6 @@
 package me.ppvrflw.matcher
 
-import me.ppvrflw.DomainNameRecord
+import me.ppvrflw.record.DomainNameRecord
 import me.ppvrflw.Matcher
 
 /**

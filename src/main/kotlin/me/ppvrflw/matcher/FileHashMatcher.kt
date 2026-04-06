@@ -1,6 +1,6 @@
 package me.ppvrflw.matcher
 
-import me.ppvrflw.FileHashRecord
+import me.ppvrflw.record.FileHashRecord
 import me.ppvrflw.Matcher
 
 /**

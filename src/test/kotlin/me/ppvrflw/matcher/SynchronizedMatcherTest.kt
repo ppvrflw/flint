@@ -5,9 +5,9 @@ import io.kotest.matchers.collections.shouldBeIn
 import io.kotest.matchers.shouldBe
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicReference
-import me.ppvrflw.DomainNameRecord
-import me.ppvrflw.FileHashRecord
-import me.ppvrflw.IpAddressRecord
+import me.ppvrflw.record.DomainNameRecord
+import me.ppvrflw.record.FileHashRecord
+import me.ppvrflw.record.IpAddressRecord
 
 class SynchronizedMatcherTest :
     FunSpec({

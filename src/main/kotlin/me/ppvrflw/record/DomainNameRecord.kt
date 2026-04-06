@@ -1,4 +1,4 @@
-package me.ppvrflw
+package me.ppvrflw.record
 
 private const val MIN_DOMAIN_PARTS = 2
 

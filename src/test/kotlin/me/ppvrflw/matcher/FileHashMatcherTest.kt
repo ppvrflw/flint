@@ -2,7 +2,7 @@ package me.ppvrflw.matcher
 
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
-import me.ppvrflw.FileHashRecord
+import me.ppvrflw.record.FileHashRecord
 
 class FileHashMatcherTest :
     FunSpec({

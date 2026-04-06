@@ -1,4 +1,4 @@
-package me.ppvrflw
+package me.ppvrflw.record
 
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.FunSpec

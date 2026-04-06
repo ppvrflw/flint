@@ -3,7 +3,7 @@ package me.ppvrflw.matcher
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.datatest.withTests
 import io.kotest.matchers.shouldBe
-import me.ppvrflw.DomainNameRecord
+import me.ppvrflw.record.DomainNameRecord
 
 class DomainNameMatcherTest :
     FunSpec({

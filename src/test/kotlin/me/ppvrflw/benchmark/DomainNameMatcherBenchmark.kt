@@ -1,7 +1,7 @@
 package me.ppvrflw.benchmark
 
 import kotlinx.benchmark.*
-import me.ppvrflw.DomainNameRecord
+import me.ppvrflw.record.DomainNameRecord
 import me.ppvrflw.matcher.DomainNameMatcher
 import org.openjdk.jmh.annotations.BenchmarkMode
 import org.openjdk.jmh.annotations.Fork

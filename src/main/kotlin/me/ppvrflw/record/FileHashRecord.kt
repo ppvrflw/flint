@@ -1,4 +1,4 @@
-package me.ppvrflw
+package me.ppvrflw.record
 
 /**
  * Represents a file hash as a lowercase hexadecimal string.

@@ -1,4 +1,4 @@
-package me.ppvrflw
+package me.ppvrflw.record
 
 import java.net.InetAddress
 
@@ -17,10 +17,10 @@ private const val MAX_OCTET_VALUE = 255uL
  * @property prefix CIDR prefix length. Defaults to /32 for IPv4 and /128 for IPv6.
  */
 data class IpAddressRecord(
-    val ipVersion: IpVersion,
-    val ipNumberHigh: ULong,
-    val ipNumberLow: ULong,
-    val prefix: Int,
+  val ipVersion: IpVersion,
+  val ipNumberHigh: ULong,
+  val ipNumberLow: ULong,
+  val prefix: Int,
 ) {
   companion object {
     /**

@@ -1,4 +1,4 @@
-package me.ppvrflw
+package me.ppvrflw.record
 
 enum class IpVersion(val maxPrefix: Int) {
   IPv4(maxPrefix = 32),

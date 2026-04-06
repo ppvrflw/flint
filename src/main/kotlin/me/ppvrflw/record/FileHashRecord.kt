@@ -20,6 +20,7 @@ data class FileHashRecord(val hash: String) : FileHashMatchable {
   init {
     require(hash.isNotBlank()) { "hash can't be empty" }
     require(hash == hash.lowercase()) { "hash must be lowercase" }
+    require(hash.all { it in '0'..'9' || it in 'a'..'f' }) { "hash must be hexadecimal" }
   }
 
   companion object {

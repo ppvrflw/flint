@@ -31,7 +31,7 @@ implementation 'me.ppvrflw:flint:0.1.0'
 
 #### Kotlin
 ```kotlin
-import me.ppvrflw.DomainNameRecord
+import me.ppvrflw.record.DomainNameRecord
 import me.ppvrflw.matcher.DomainNameMatcher
 
 fun main() {
@@ -47,7 +47,7 @@ fun main() {
 
 #### Java
 ```java
-import me.ppvrflw.DomainNameRecord;
+import me.ppvrflw.record.DomainNameRecord;
 import me.ppvrflw.matcher.DomainNameMatcher;
 
 class Main {

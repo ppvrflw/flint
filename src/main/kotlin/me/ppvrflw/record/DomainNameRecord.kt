@@ -43,7 +43,7 @@ data class DomainNameRecord(
     fun from(hostname: String): DomainNameRecord {
       require(hostname.isNotEmpty()) { "hostname cannot be empty" }
 
-      val parts = hostname.split(".")
+      val parts = hostname.lowercase().split(".")
       require(parts.size >= MIN_DOMAIN_PARTS) { "hostname must have at least domain and tld" }
 
       val tld = parts.last()

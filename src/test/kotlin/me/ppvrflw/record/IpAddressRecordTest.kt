@@ -3,6 +3,7 @@ package me.ppvrflw.record
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
+import me.ppvrflw.matcher.IpMatcher
 
 class IpAddressRecordTest :
     FunSpec({
@@ -25,18 +26,37 @@ class IpAddressRecordTest :
 
         test("rejects invalid CIDR notation with more than one slash") {
           shouldThrow<IllegalArgumentException> { IpAddressRecord.from("10.0.0.1/24/extra") }
+              .message shouldBe "invalid prefix: 24/extra"
         }
 
         test("rejects invalid IPv4 octet count") {
           shouldThrow<IllegalArgumentException> { IpAddressRecord.from("10.0.0/24") }
+              .message shouldBe "invalid IPv4 address: 10.0.0"
         }
 
         test("rejects invalid IPv4 octet values") {
           shouldThrow<IllegalArgumentException> { IpAddressRecord.from("256.0.0.1") }
+              .message shouldBe "invalid IPv4 address: 256.0.0.1"
+        }
+
+        test("rejects invalid negative prefix length") {
+          shouldThrow<IllegalArgumentException> { IpAddressRecord.from("10.0.0.1/-1") }
+              .message shouldBe "invalid prefix length: -1"
         }
 
         test("rejects invalid prefix length") {
           shouldThrow<IllegalArgumentException> { IpAddressRecord.from("10.0.0.1/33") }
+              .message shouldBe "invalid prefix length: 33"
+        }
+
+        test("rejects prefix only") {
+          shouldThrow<IllegalArgumentException> { IpAddressRecord.from("/22") }.message shouldBe
+              "invalid IP address: /22"
+        }
+
+        test("rejects single slash prefix") {
+          shouldThrow<IllegalArgumentException> { IpAddressRecord.from("/") }.message shouldBe
+              "invalid IP address: /"
         }
       }
 
@@ -98,12 +118,19 @@ class IpAddressRecordTest :
           record.ipNumberLow shouldBe 0x00000000c0000201u
         }
 
+        test("rejects invalid IPv6 negative prefix length") {
+          shouldThrow<IllegalArgumentException> { IpAddressRecord.from("2001:db8::1/-1") }
+              .message shouldBe "invalid prefix length: -1"
+        }
+
         test("rejects invalid IPv6 prefix length") {
           shouldThrow<IllegalArgumentException> { IpAddressRecord.from("2001:db8::1/129") }
+              .message shouldBe "invalid prefix length: 129"
         }
 
         test("rejects invalid IPv6 address") {
           shouldThrow<IllegalArgumentException> { IpAddressRecord.from("2001:db8:::1") }
+              .message shouldBe "invalid IPv6 address: 2001:db8:::1"
         }
       }
 
@@ -113,6 +140,29 @@ class IpAddressRecordTest :
 
           record.ipNumberHigh.toString(16) shouldBe "3e59a0cf84319b75"
           record.ipNumberLow.toString(16) shouldBe "13063797e46edeab"
+        }
+      }
+
+      context("match delegation") {
+        test("match delegates to IpMatcher for IPv4") {
+          val matcher =
+              IpMatcher<String>().apply { insert(IpAddressRecord.from("10.0.0.0/8"), "A") }
+
+          IpAddressRecord.from("10.1.2.3").match(matcher) shouldBe listOf("A")
+        }
+
+        test("match delegates to IpMatcher for IPv6") {
+          val matcher =
+              IpMatcher<String>().apply { insert(IpAddressRecord.from("2001:db8::/32"), "A") }
+
+          IpAddressRecord.from("2001:db8::1").match(matcher) shouldBe listOf("A")
+        }
+
+        test("match returns empty for unregistered IP") {
+          val matcher =
+              IpMatcher<String>().apply { insert(IpAddressRecord.from("10.0.0.0/8"), "A") }
+
+          IpAddressRecord.from("172.16.0.1").match(matcher) shouldBe emptyList()
         }
       }
     })

@@ -1,11 +1,19 @@
 plugins {
   kotlin("jvm") version "2.3.10"
 
+  // Publishing
   `maven-publish`
+
+  // Formatting
   id("com.ncorti.ktfmt.gradle") version "0.26.0"
 
+  // Benchmarking
   id("org.jetbrains.kotlinx.benchmark") version "0.4.14"
   kotlin("plugin.allopen") version "2.3.10"
+
+  // Testing
+  id("io.kotest").version("6.1.10")
+  id("org.jetbrains.kotlinx.kover") version "0.9.8"
 }
 
 group = "me.ppvrflw"
@@ -16,16 +24,16 @@ repositories { mavenCentral() }
 
 dependencies {
   testImplementation(kotlin("test"))
-  testImplementation("io.kotest:kotest-runner-junit5-jvm:6.1.10")
-  runtimeOnly("io.kotest:kotest-assertions-core:6.1.10")
 
   testImplementation("org.jetbrains.kotlinx:kotlinx-benchmark-runtime:0.4.14")
+
+  testImplementation("io.kotest:kotest-runner-junit5-jvm:6.1.10")
+  testRuntimeOnly("io.kotest:kotest-assertions-core:6.1.10")
 }
 
 kotlin { jvmToolchain(24) }
 
-tasks.test { useJUnitPlatform() }
-
+// Benchmarking
 allOpen { annotation("org.openjdk.jmh.annotations.State") }
 
 benchmark {
@@ -42,6 +50,7 @@ benchmark {
   }
 }
 
+// Publishing
 publishing {
   repositories {
     maven {
@@ -54,4 +63,17 @@ publishing {
     }
   }
   publications { register<MavenPublication>("gpr") { from(components["java"]) } }
+}
+
+// Testing
+tasks.withType<Test>().configureEach { useJUnitPlatform() }
+
+kover {
+  reports {
+    verify {
+      rule {
+        minBound(80) // fail if coverage < 80%
+      }
+    }
+  }
 }

@@ -40,13 +40,14 @@ data class IpAddressRecord(
       val (ipString, prefixString) =
           when {
             '/' in ip -> ip.split('/', limit = 2)
-            else -> listOf(ip, null)
+            else -> listOf(ip, "")
           }
 
-      require(ipString != null) { "Invalid IP address: $ip" }
+      require(ipString.isNotEmpty()) { "invalid IP address: $ip" }
       val prefix =
-          prefixString?.toIntOrNull()
-              ?: prefixString?.let { throw IllegalArgumentException("Invalid prefix: $it") }
+          prefixString
+              .takeIf { it.isNotEmpty() }
+              ?.let { it.toIntOrNull() ?: throw IllegalArgumentException("invalid prefix: $it") }
 
       return when {
         ':' in ipString -> parseAsIpv6(ipString, prefix)
@@ -81,9 +82,9 @@ private fun parseAsIpv4(ip: String, prefix: Int?): IpAddressRecord {
 private fun parseLikeIpv4(ipVersion: IpVersion, ip: String, prefix: Int?): IpAddressRecord {
   val octets = ip.split('.').map { it.toULong() }
 
-  require(octets.size == IPV4_OCTET_COUNT) { "Invalid IPv4 address: $ip" }
-  require(octets.all { it <= MAX_OCTET_VALUE }) { "Invalid IPv4 address: $ip" }
-  require(prefix == null || prefix in 0..ipVersion.maxPrefix) { "Invalid prefix length: $prefix" }
+  require(octets.size == IPV4_OCTET_COUNT) { "invalid IPv4 address: $ip" }
+  require(octets.all { it <= MAX_OCTET_VALUE }) { "invalid IPv4 address: $ip" }
+  require(prefix == null || prefix in 0..ipVersion.maxPrefix) { "invalid prefix length: $prefix" }
 
   val ipNumber = octets.fold(0uL) { acc, octet -> (acc shl 8) or octet }
 
@@ -111,14 +112,13 @@ private fun parseAsIpv6(ip: String, prefix: Int?): IpAddressRecord {
 
   val addressBytes =
       runCatching { InetAddress.getByName(cleanIp).address }
-          .getOrElse { throw IllegalArgumentException("Invalid IPv6 address: $ip") }
+          .getOrElse { throw IllegalArgumentException("invalid IPv6 address: $ip") }
 
   if (addressBytes.size == IPV4_OCTET_COUNT) {
     return parseLikeIpv4(ipVersion, InetAddress.getByAddress(addressBytes).hostAddress, prefix)
   }
 
-  require(addressBytes.size == IPV6_BYTE_COUNT) { "Invalid IPv6 address: $ip" }
-  require(prefix == null || prefix in 0..ipVersion.maxPrefix) { "Invalid prefix length: $prefix" }
+  require(prefix == null || prefix in 0..ipVersion.maxPrefix) { "invalid prefix length: $prefix" }
 
   val high = addressBytes.toULong(startIndex = 0)
   val low = addressBytes.toULong(startIndex = 8)

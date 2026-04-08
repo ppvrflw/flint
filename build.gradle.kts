@@ -18,7 +18,7 @@ plugins {
 
 group = "me.ppvrflw"
 
-version = "0.1.0"
+version = providers.environmentVariable("VERSION").getOrElse("0.1.0-SNAPSHOT")
 
 repositories { mavenCentral() }
 

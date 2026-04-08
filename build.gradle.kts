@@ -31,7 +31,7 @@ dependencies {
   testRuntimeOnly("io.kotest:kotest-assertions-core:6.1.11")
 }
 
-kotlin { jvmToolchain(24) }
+kotlin { jvmToolchain(25) }
 
 // Benchmarking
 allOpen { annotation("org.openjdk.jmh.annotations.State") }

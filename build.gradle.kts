@@ -12,7 +12,7 @@ plugins {
   kotlin("plugin.allopen") version "2.3.10"
 
   // Testing
-  id("io.kotest").version("6.1.10")
+  id("io.kotest").version("6.1.11")
   id("org.jetbrains.kotlinx.kover") version "0.9.8"
 }
 
@@ -27,8 +27,8 @@ dependencies {
 
   testImplementation("org.jetbrains.kotlinx:kotlinx-benchmark-runtime:0.4.14")
 
-  testImplementation("io.kotest:kotest-runner-junit5-jvm:6.1.10")
-  testRuntimeOnly("io.kotest:kotest-assertions-core:6.1.10")
+  testImplementation("io.kotest:kotest-runner-junit5-jvm:6.1.11")
+  testRuntimeOnly("io.kotest:kotest-assertions-core:6.1.11")
 }
 
 kotlin { jvmToolchain(24) }

@@ -40,9 +40,9 @@ jobs:
           alert-threshold: '150%'
           comment-on-alert: true
           fail-on-alert: true
-          auto-push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
-          benchmark-data-dir-path: dev/bench
           alert-comment-cc-users: '@${{ github.repository_owner }}'
+          # Disable auto-push
+          auto-push: false
 
       - name: Add benchmark summary
         if: always()

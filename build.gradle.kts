@@ -18,7 +18,11 @@ plugins {
 
 group = "me.ppvrflw"
 
-version = providers.environmentVariable("VERSION").getOrElse("0.1.0-SNAPSHOT")
+version =
+    providers
+        .environmentVariable("VERSION")
+        .map { it.removePrefix("v") }
+        .getOrElse("0.1.0-SNAPSHOT")
 
 repositories { mavenCentral() }
 
@@ -55,7 +59,7 @@ publishing {
   repositories {
     maven {
       name = "GitHubPackages"
-      url = uri("https://maven.pkg.github.com/ppvrflow/flint")
+      url = uri("https://maven.pkg.github.com/ppvrflw/flint")
       credentials {
         username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
         password = project.findProperty("gpr.key") as String? ?: System.getenv("TOKEN")

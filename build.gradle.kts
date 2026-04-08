@@ -50,7 +50,6 @@ benchmark {
       iterations = 3
       iterationTime = 1
       iterationTimeUnit = "s"
-      outputFormat = "json"
       reportFormat = "json"
     }
   }

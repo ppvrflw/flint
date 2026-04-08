@@ -8,7 +8,7 @@ plugins {
   id("com.ncorti.ktfmt.gradle") version "0.26.0"
 
   // Benchmarking
-  id("org.jetbrains.kotlinx.benchmark") version "0.4.14"
+  id("org.jetbrains.kotlinx.benchmark") version "0.4.16"
   kotlin("plugin.allopen") version "2.3.10"
 
   // Testing
@@ -25,7 +25,7 @@ repositories { mavenCentral() }
 dependencies {
   testImplementation(kotlin("test"))
 
-  testImplementation("org.jetbrains.kotlinx:kotlinx-benchmark-runtime:0.4.14")
+  testImplementation("org.jetbrains.kotlinx:kotlinx-benchmark-runtime:0.4.16")
 
   testImplementation("io.kotest:kotest-runner-junit5-jvm:6.1.11")
   testRuntimeOnly("io.kotest:kotest-assertions-core:6.1.11")

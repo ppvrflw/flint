@@ -19,4 +19,15 @@ jobs:
 
       - uses: gradle/actions/setup-gradle@v6
 
-      - run: ./gradlew benchmark
+      - run: ./gradlew benchmark | tee benchmark-output.txt
+
+      - name: Add benchmark summary
+        if: always()
+        run: |
+          if grep -q "^Benchmark" benchmark-output.txt; then
+            echo '## Benchmark Results' >> "$GITHUB_STEP_SUMMARY"
+            echo '' >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+            sed -n '/^Benchmark/,/^$/p' benchmark-output.txt >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+          fi

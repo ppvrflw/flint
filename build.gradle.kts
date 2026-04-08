@@ -42,8 +42,8 @@ benchmark {
   configurations {
     named("main") {
       includes = mutableListOf("me.ppvrflw.benchmark.*")
-      warmups = 10
-      iterations = 10
+      warmups = 1
+      iterations = 3
       iterationTime = 1
       iterationTimeUnit = "s"
     }

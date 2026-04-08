@@ -9,7 +9,7 @@ plugins {
 
   // Benchmarking
   id("org.jetbrains.kotlinx.benchmark") version "0.4.16"
-  kotlin("plugin.allopen") version "2.3.10"
+  kotlin("plugin.allopen") version "2.3.20"
 
   // Testing
   id("io.kotest").version("6.1.11")

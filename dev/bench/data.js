@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1775763213568,
+  "lastUpdate": 1775763229303,
   "repoUrl": "https://github.com/ppvrflw/flint",
   "entries": {
     "Benchmark": [
@@ -266,6 +266,54 @@ window.BENCHMARK_DATA = {
           {
             "name": "me.ppvrflw.benchmark.Ipv6MatcherBenchmark.match",
             "value": 3180370.8949246653,
+            "unit": "ops/s",
+            "extra": "iterations: 3\nforks: 1\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "ppvrflw@pm.me",
+            "name": "ppvrflw",
+            "username": "ppvrflw"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "5093a3a65272446826d634723c90309c2541aac2",
+          "message": "Merge pull request #7 from ppvrflw/dependabot/github_actions/actions/upload-artifact-7\n\nBump actions/upload-artifact from 4 to 7",
+          "timestamp": "2026-04-09T21:32:28+02:00",
+          "tree_id": "6da572d661cbdfd88fec60a1160dfd17a1e609b9",
+          "url": "https://github.com/ppvrflw/flint/commit/5093a3a65272446826d634723c90309c2541aac2"
+        },
+        "date": 1775763228551,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "me.ppvrflw.benchmark.DomainNameMatcherBenchmark.match",
+            "value": 4215222.700468357,
+            "unit": "ops/s",
+            "extra": "iterations: 3\nforks: 1\nthreads: 1"
+          },
+          {
+            "name": "me.ppvrflw.benchmark.FileHashMatcherBenchmark.match",
+            "value": 9406015.173285933,
+            "unit": "ops/s",
+            "extra": "iterations: 3\nforks: 1\nthreads: 1"
+          },
+          {
+            "name": "me.ppvrflw.benchmark.Ipv4MatcherBenchmark.match",
+            "value": 4182987.276496928,
+            "unit": "ops/s",
+            "extra": "iterations: 3\nforks: 1\nthreads: 1"
+          },
+          {
+            "name": "me.ppvrflw.benchmark.Ipv6MatcherBenchmark.match",
+            "value": 2839561.3763419986,
             "unit": "ops/s",
             "extra": "iterations: 3\nforks: 1\nthreads: 1"
           }

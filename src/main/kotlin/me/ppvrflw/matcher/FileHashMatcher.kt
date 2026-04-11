@@ -1,5 +1,6 @@
 package me.ppvrflw.matcher
 
+import me.ppvrflw.AbstractMatcher
 import me.ppvrflw.Matcher
 import me.ppvrflw.record.FileHashRecord
 
@@ -11,7 +12,7 @@ import me.ppvrflw.record.FileHashRecord
  *
  * @param V the type of value associated with file hash entries
  */
-class FileHashMatcher<V> : Matcher<FileHashRecord, V> {
+class FileHashMatcher<V> : AbstractMatcher<FileHashRecord, V>(FileHashRecord::from) {
   private val fileHashMap: MutableMap<String, MutableList<V>> = mutableMapOf()
 
   override fun insert(key: FileHashRecord, value: V) {

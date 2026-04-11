@@ -1,5 +1,6 @@
 package me.ppvrflw.matcher
 
+import me.ppvrflw.AbstractMatcher
 import me.ppvrflw.Matcher
 import me.ppvrflw.record.DomainNameRecord
 
@@ -14,7 +15,7 @@ import me.ppvrflw.record.DomainNameRecord
  *
  * @param V the type of value associated with domain entries
  */
-class DomainNameMatcher<V> : Matcher<DomainNameRecord, V> {
+class DomainNameMatcher<V> : AbstractMatcher<DomainNameRecord, V>(DomainNameRecord::from) {
 
   private val tldDomainTrieMap: MutableMap<String, MutableMap<String, SubdomainTrie<V>>> =
       mutableMapOf()

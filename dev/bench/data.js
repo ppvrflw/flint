@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1775763229303,
+  "lastUpdate": 1775938919778,
   "repoUrl": "https://github.com/ppvrflw/flint",
   "entries": {
     "Benchmark": [
@@ -314,6 +314,50 @@ window.BENCHMARK_DATA = {
           {
             "name": "me.ppvrflw.benchmark.Ipv6MatcherBenchmark.match",
             "value": 2839561.3763419986,
+            "unit": "ops/s",
+            "extra": "iterations: 3\nforks: 1\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "ppvrflw",
+            "username": "ppvrflw"
+          },
+          "committer": {
+            "name": "ppvrflw",
+            "username": "ppvrflw"
+          },
+          "id": "3c622704784e9d244e7b2cd82ce86d72209063d0",
+          "message": "add bulk loading",
+          "timestamp": "2026-04-09T19:32:33Z",
+          "url": "https://github.com/ppvrflw/flint/pull/9/commits/3c622704784e9d244e7b2cd82ce86d72209063d0"
+        },
+        "date": 1775938919001,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "me.ppvrflw.benchmark.DomainNameMatcherBenchmark.match",
+            "value": 4599159.6375267,
+            "unit": "ops/s",
+            "extra": "iterations: 3\nforks: 1\nthreads: 1"
+          },
+          {
+            "name": "me.ppvrflw.benchmark.FileHashMatcherBenchmark.match",
+            "value": 8678490.122730024,
+            "unit": "ops/s",
+            "extra": "iterations: 3\nforks: 1\nthreads: 1"
+          },
+          {
+            "name": "me.ppvrflw.benchmark.Ipv4MatcherBenchmark.match",
+            "value": 4372695.721162311,
+            "unit": "ops/s",
+            "extra": "iterations: 3\nforks: 1\nthreads: 1"
+          },
+          {
+            "name": "me.ppvrflw.benchmark.Ipv6MatcherBenchmark.match",
+            "value": 3161083.1334681604,
             "unit": "ops/s",
             "extra": "iterations: 3\nforks: 1\nthreads: 1"
           }

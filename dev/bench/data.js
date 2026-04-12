@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1775981098914,
+  "lastUpdate": 1775982020318,
   "repoUrl": "https://github.com/ppvrflw/flint",
   "entries": {
     "Benchmark": [
@@ -490,6 +490,54 @@ window.BENCHMARK_DATA = {
           {
             "name": "me.ppvrflw.benchmark.Ipv6MatcherBenchmark.match",
             "value": 3158415.804730481,
+            "unit": "ops/s",
+            "extra": "iterations: 3\nforks: 1\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "ppvrflw@pm.me",
+            "name": "ppvrflw",
+            "username": "ppvrflw"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "9a7247f5c10007198c3e55d787a5031b251d7a4e",
+          "message": "Merge pull request #9 from ppvrflw/feature/bulk-loading\n\nadd bulk loading",
+          "timestamp": "2026-04-12T10:18:31+02:00",
+          "tree_id": "d9f5b6b1a725dd4fe9a02d361fa9f8b4f0b69355",
+          "url": "https://github.com/ppvrflw/flint/commit/9a7247f5c10007198c3e55d787a5031b251d7a4e"
+        },
+        "date": 1775982019588,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "me.ppvrflw.benchmark.DomainNameMatcherBenchmark.match",
+            "value": 4259990.114482827,
+            "unit": "ops/s",
+            "extra": "iterations: 3\nforks: 1\nthreads: 1"
+          },
+          {
+            "name": "me.ppvrflw.benchmark.FileHashMatcherBenchmark.match",
+            "value": 7883641.910197019,
+            "unit": "ops/s",
+            "extra": "iterations: 3\nforks: 1\nthreads: 1"
+          },
+          {
+            "name": "me.ppvrflw.benchmark.Ipv4MatcherBenchmark.match",
+            "value": 4205151.465081155,
+            "unit": "ops/s",
+            "extra": "iterations: 3\nforks: 1\nthreads: 1"
+          },
+          {
+            "name": "me.ppvrflw.benchmark.Ipv6MatcherBenchmark.match",
+            "value": 2938254.431413874,
             "unit": "ops/s",
             "extra": "iterations: 3\nforks: 1\nthreads: 1"
           }

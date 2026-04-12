@@ -1,8 +1,13 @@
 package me.ppvrflw
 
 /**
+ * Core interface for matching keys against stored entries and retrieving associated values.
+ *
  * Implementations are not thread-safe. Callers must synchronize externally if accessed from
  * multiple threads.
+ *
+ * @param K the key type used for indexing and matching
+ * @param V the type of value associated with each key
  */
 interface Matcher<K, V> {
 
@@ -13,6 +18,16 @@ interface Matcher<K, V> {
    * @param value the value to store
    */
   fun insert(key: K, value: V)
+
+  /**
+   * Inserts all key-value pairs from the given [entries].
+   *
+   * @param entries the key-value pairs to insert
+   * @see insert
+   */
+  fun insertAll(entries: Iterable<Pair<K, V>>) {
+    entries.forEach { (key, value) -> insert(key, value) }
+  }
 
   /**
    * Removes a value associated with the given key from the matcher.

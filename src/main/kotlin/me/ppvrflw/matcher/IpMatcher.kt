@@ -1,11 +1,19 @@
 package me.ppvrflw.matcher
 
-import me.ppvrflw.Matcher
+import me.ppvrflw.AbstractMatcher
 import me.ppvrflw.record.IpAddressRecord
 import me.ppvrflw.record.IpVersion
 
-/** IP address matcher that routes IPv4 and IPv6 records to separate binary prefix tries. */
-class IpMatcher<V> : Matcher<IpAddressRecord, V> {
+/**
+ * A [Matcher] that indexes and matches values by IP address, supporting CIDR prefix matching.
+ *
+ * Routes IPv4 and IPv6 records to separate [BinaryPrefixTrie] instances. Matching an IP address
+ * returns all values registered at that exact address and any covering CIDR prefix (e.g. querying
+ * `192.168.1.1` returns values from both `192.168.1.1/32` and `192.168.0.0/16`).
+ *
+ * @param V the type of value associated with each key
+ */
+class IpMatcher<V> : AbstractMatcher<IpAddressRecord, V>(IpAddressRecord::from) {
 
   private val tries = IpVersion.entries.associateWith { BinaryPrefixTrie<V>() }
 

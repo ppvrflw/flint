@@ -63,6 +63,35 @@ class Main {
 }
 ```
 
+### Bulk loading
+
+All matchers support bulk loading from raw strings via `insertAllRaw`, which handles parsing internally.
+
+#### From a collection
+```kotlin
+val matcher = DomainNameMatcher<String>()
+matcher.insertAllRaw(listOf("google.com" to "google", "github.com" to "github"))
+```
+
+#### From a file (lazy, memory-efficient)
+```kotlin
+val matcher = IpMatcher<String>()
+File("blocklist.txt").useLines { lines ->
+    matcher.insertAllRaw(lines.map { it to it })
+}
+```
+
+#### With typed keys
+```kotlin
+val matcher = FileHashMatcher<String>()
+matcher.insertAll(
+    listOf(
+        FileHashRecord.from("abc123") to "malware-a",
+        FileHashRecord.from("def456") to "malware-b",
+    )
+)
+```
+
 ## Benchmarking
 
 Benchmark settings:

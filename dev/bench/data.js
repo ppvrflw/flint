@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1776091009233,
+  "lastUpdate": 1776093193834,
   "repoUrl": "https://github.com/ppvrflw/flint",
   "entries": {
     "Benchmark": [
@@ -626,6 +626,54 @@ window.BENCHMARK_DATA = {
           {
             "name": "me.ppvrflw.benchmark.Ipv6MatcherBenchmark.match",
             "value": 3118661.354351958,
+            "unit": "ops/s",
+            "extra": "iterations: 10\nforks: 1\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "ppvrflw@pm.me",
+            "name": "ppvrflw",
+            "username": "ppvrflw"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "9553389af66eba552c0a44b0b6128457d8da3a30",
+          "message": "Merge pull request #10 from ppvrflw/improve/filehash-matcher-performance\n\nAdd fromTrusted factory methods to record types",
+          "timestamp": "2026-04-13T17:10:59+02:00",
+          "tree_id": "ec216e59d5160ad62403858eb484e93aca6c7180",
+          "url": "https://github.com/ppvrflw/flint/commit/9553389af66eba552c0a44b0b6128457d8da3a30"
+        },
+        "date": 1776093193203,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "me.ppvrflw.benchmark.DomainNameMatcherBenchmark.match",
+            "value": 4754036.21820634,
+            "unit": "ops/s",
+            "extra": "iterations: 10\nforks: 1\nthreads: 1"
+          },
+          {
+            "name": "me.ppvrflw.benchmark.FileHashMatcherBenchmark.match",
+            "value": 210915342.80477577,
+            "unit": "ops/s",
+            "extra": "iterations: 10\nforks: 1\nthreads: 1"
+          },
+          {
+            "name": "me.ppvrflw.benchmark.Ipv4MatcherBenchmark.match",
+            "value": 4725138.067042696,
+            "unit": "ops/s",
+            "extra": "iterations: 10\nforks: 1\nthreads: 1"
+          },
+          {
+            "name": "me.ppvrflw.benchmark.Ipv6MatcherBenchmark.match",
+            "value": 3014349.559550254,
             "unit": "ops/s",
             "extra": "iterations: 10\nforks: 1\nthreads: 1"
           }

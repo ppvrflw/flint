@@ -27,7 +27,7 @@ class DomainNameMatcherBenchmark {
 
   @Benchmark
   fun match(blackhole: Blackhole) {
-    blackhole.consume(matcher.match(DomainNameRecord.from(queries[index])))
+    blackhole.consume(matcher.match(DomainNameRecord.fromTrusted(queries[index])))
     index = (index + 1) % queries.size
   }
 }

@@ -143,6 +143,39 @@ class IpAddressRecordTest :
         }
       }
 
+      context("fromTrusted") {
+        test("parses an IPv4 address without validation") {
+          val record = IpAddressRecord.fromTrusted("192.168.1.1")
+
+          record.ipVersion shouldBe IpVersion.IPv4
+          record.prefix shouldBe 32
+          record.ipNumberLow shouldBe 0xC0A80101u
+        }
+
+        test("parses an IPv4 CIDR address without validation") {
+          val record = IpAddressRecord.fromTrusted("10.0.0.1/24")
+
+          record.prefix shouldBe 24
+          record.ipNumberLow shouldBe 0x0A000001u
+        }
+
+        test("parses an IPv6 address without validation") {
+          val record = IpAddressRecord.fromTrusted("2001:db8::1")
+
+          record.ipVersion shouldBe IpVersion.IPv6
+          record.prefix shouldBe 128
+          record.ipNumberHigh shouldBe 0x20010db800000000u
+          record.ipNumberLow shouldBe 0x0000000000000001u
+        }
+
+        test("parses an IPv6 CIDR address without validation") {
+          val record = IpAddressRecord.fromTrusted("fe80::/10")
+
+          record.prefix shouldBe 10
+          record.ipNumberHigh shouldBe 0xfe80000000000000u
+        }
+      }
+
       context("match delegation") {
         test("match delegates to IpMatcher for IPv4") {
           val matcher =

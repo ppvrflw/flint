@@ -24,7 +24,7 @@ class Ipv4MatcherBenchmark {
 
   @Benchmark
   fun match(blackhole: Blackhole) {
-    blackhole.consume(matcher.match(IpAddressRecord.from(queries[index])))
+    blackhole.consume(matcher.match(IpAddressRecord.fromTrusted(queries[index])))
     index = (index + 1) % queries.size
   }
 }

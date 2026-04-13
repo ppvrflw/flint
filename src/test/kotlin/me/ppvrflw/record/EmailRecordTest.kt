@@ -51,6 +51,29 @@ class EmailRecordTest :
         }
       }
 
+      context("fromTrusted") {
+        test("parses a valid email without validation") {
+          val record = EmailRecord.fromTrusted("user@example.com")
+
+          record.localPart shouldBe "user"
+          record.domainNameRecord.tld shouldBe "com"
+          record.domainNameRecord.domain shouldBe "example"
+        }
+
+        test("parses email with subdomain without validation") {
+          val record = EmailRecord.fromTrusted("user@mail.example.com")
+
+          record.localPart shouldBe "user"
+          record.domainNameRecord.subdomainParts shouldBe listOf("mail")
+        }
+
+        test("preserves local part with special characters") {
+          val record = EmailRecord.fromTrusted("user+tag@example.com")
+
+          record.localPart shouldBe "user+tag"
+        }
+      }
+
       context("match delegation") {
         test("match delegates to domain part of the email") {
           val matcher =

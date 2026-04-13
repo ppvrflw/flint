@@ -51,13 +51,28 @@ class FileHashRecordTest :
               "hash must be hexadecimal"
         }
 
-        test("rejects hash with uppercase characters") {
-          shouldThrow<IllegalArgumentException> { FileHashRecord("ABC12345") }.message shouldBe
-              "hash must be lowercase"
-        }
-
         test("rejects hash with whitespace") {
           shouldThrow<IllegalArgumentException> { FileHashRecord.from("abc 123") }
+        }
+      }
+
+      context("fromTrusted") {
+        test("creates a record without validation") {
+          val record = FileHashRecord.fromTrusted("abc123")
+
+          record.hash shouldBe "abc123"
+        }
+
+        test("does not normalize to lowercase") {
+          val record = FileHashRecord.fromTrusted("ABC123")
+
+          record.hash shouldBe "ABC123"
+        }
+
+        test("does not reject non-hexadecimal characters") {
+          val record = FileHashRecord.fromTrusted("xyz-!@#")
+
+          record.hash shouldBe "xyz-!@#"
         }
       }
 

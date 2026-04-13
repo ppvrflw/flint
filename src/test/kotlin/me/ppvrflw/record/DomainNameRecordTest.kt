@@ -68,6 +68,32 @@ class DomainNameRecordTest :
         }
       }
 
+      context("fromTrusted") {
+        test("parses a simple domain without validation") {
+          val record = DomainNameRecord.fromTrusted("example.com")
+
+          record.tld shouldBe "com"
+          record.domain shouldBe "example"
+          record.subdomainParts shouldBe null
+        }
+
+        test("parses a domain with subdomains") {
+          val record = DomainNameRecord.fromTrusted("v1.api.example.com")
+
+          record.tld shouldBe "com"
+          record.domain shouldBe "example"
+          record.subdomainParts shouldBe listOf("v1", "api")
+        }
+
+        test("does not normalize to lowercase") {
+          val record = DomainNameRecord.fromTrusted("API.Example.COM")
+
+          record.tld shouldBe "COM"
+          record.domain shouldBe "Example"
+          record.subdomainParts shouldBe listOf("API")
+        }
+      }
+
       context("match delegation") {
         test("match delegates to DomainNameMatcher") {
           val matcher =

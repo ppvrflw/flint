@@ -31,17 +31,27 @@ jobs:
         run: echo "file=$(find build/reports/benchmarks -name '*.json' | head -1)" >> "$GITHUB_OUTPUT"
 
       - name: Store benchmark result
-        if: steps.find-result.outputs.file != ''
+        if: steps.find-result.outputs.file != '' && github.ref == 'refs/heads/main'
         uses: benchmark-action/github-action-benchmark@v1
         with:
           tool: 'jmh'
           output-file-path: ${{ steps.find-result.outputs.file }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          alert-threshold: '150%'
-          comment-on-alert: true
-          fail-on-alert: true
-          alert-comment-cc-users: '@${{ github.repository_owner }}'
           auto-push: true
+
+      - name: Compare against main baseline
+        if: steps.find-result.outputs.file != '' && github.event_name == 'pull_request'
+        uses: benchmark-action/github-action-benchmark@v1
+        with:
+          tool: 'jmh'
+          output-file-path: ${{ steps.find-result.outputs.file }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          alert-threshold: '100%'
+          comment-on-alert: true
+          fail-on-alert: false
+          alert-comment-cc-users: '@${{ github.repository_owner }}'
+          save-data-file: false
+          auto-push: false
 
       - name: Add benchmark summary
         if: always()

@@ -30,7 +30,7 @@ class FileHashMatcherBenchmark {
 
   @Benchmark
   fun match(blackhole: Blackhole) {
-    blackhole.consume(matcher.match(FileHashRecord.from(queries[index])))
+    blackhole.consume(matcher.match(FileHashRecord.fromTrusted(queries[index])))
     index = (index + 1) % queries.size
   }
 

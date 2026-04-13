@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1775982020318,
+  "lastUpdate": 1776070234932,
   "repoUrl": "https://github.com/ppvrflw/flint",
   "entries": {
     "Benchmark": [
@@ -540,6 +540,50 @@ window.BENCHMARK_DATA = {
             "value": 2938254.431413874,
             "unit": "ops/s",
             "extra": "iterations: 3\nforks: 1\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "ppvrflw",
+            "username": "ppvrflw"
+          },
+          "committer": {
+            "name": "ppvrflw",
+            "username": "ppvrflw"
+          },
+          "id": "ae792ad341ee8c5c99925ab8b90e35d2d2e18c55",
+          "message": "Add fromTrusted factory methods to record types",
+          "timestamp": "2026-04-12T08:18:40Z",
+          "url": "https://github.com/ppvrflw/flint/pull/10/commits/ae792ad341ee8c5c99925ab8b90e35d2d2e18c55"
+        },
+        "date": 1776070234328,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "me.ppvrflw.benchmark.DomainNameMatcherBenchmark.match",
+            "value": 4079366.365806627,
+            "unit": "ops/s",
+            "extra": "iterations: 10\nforks: 1\nthreads: 1"
+          },
+          {
+            "name": "me.ppvrflw.benchmark.FileHashMatcherBenchmark.match",
+            "value": 190838756.833265,
+            "unit": "ops/s",
+            "extra": "iterations: 10\nforks: 1\nthreads: 1"
+          },
+          {
+            "name": "me.ppvrflw.benchmark.Ipv4MatcherBenchmark.match",
+            "value": 4120754.4273359017,
+            "unit": "ops/s",
+            "extra": "iterations: 10\nforks: 1\nthreads: 1"
+          },
+          {
+            "name": "me.ppvrflw.benchmark.Ipv6MatcherBenchmark.match",
+            "value": 2782520.114557317,
+            "unit": "ops/s",
+            "extra": "iterations: 10\nforks: 1\nthreads: 1"
           }
         ]
       }
